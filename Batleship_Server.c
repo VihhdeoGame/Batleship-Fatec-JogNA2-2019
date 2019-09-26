@@ -86,7 +86,7 @@ void Cruzador(char Mapa[linha][coluna]) {
 			printf("Para posicionar horizontalmente digite 0, para posicionar verticalmente digite 1: ");
 			scanf("%d",&dir);
 		} while (dir != 0 && dir != 1);
-  		//rx = rand()%10; ry = rand()%10; 
+
 		if(dir == 0){
 			for (d = 0; d < 3; d++) {
 				for (c = 0; c < 4; c++) {
@@ -111,7 +111,7 @@ void Cruzador(char Mapa[linha][coluna]) {
 		if(valido == 1) {
 			
 			Mapa[ry][rx] = '@';
-			//dir = rand()%2;
+			
 			if(dir == 0) Mapa[ry][rx + 1] = '@';
 			if(dir == 1) Mapa[ry + 1][rx] = '@';
 			
@@ -170,7 +170,6 @@ void Encouracado(char Mapa[linha][coluna]) {
 		if(valido == 1) {
 			
 			Mapa[ry][rx] = '$';
-			//dir = rand()%2;
 			if(dir == 0){
 				Mapa[ry][rx + 1] = '$';
 				Mapa[ry][rx + 2] = '$';
@@ -469,6 +468,7 @@ int PrintTable()
 int main(){
   setlocale(LC_ALL, "Portuguese");
   srand(time(NULL));
+  //Codigos de socket
   int udpSocket, nBytes;
   char buffer[1024];
   struct sockaddr_in serverAddr, clientAddr;
@@ -497,18 +497,10 @@ int main(){
   Cruzador(myTable);
   Submarino(myTable);
   
-  /*
-  ZerarMapa(enemyTable);
-  PortaAviao(enemyTable);
-  Encouracado(enemyTable);
-  Cruzador(enemyTable);
-  Submarino(enemyTable);
-  */
-
   recvfrom(udpSocket,enemyTable,sizeof(enemyTable),0,(struct sockaddr *)&serverStorage, &addr_size);
   sendto(udpSocket,myTable,sizeof(myTable),0,(struct sockaddr *)&serverStorage,addr_size);
 
-  printf("VOCE EH O SERVIDOR, JOGA DEPOIS PORQUE SIM");
+  printf("VOCÊ É O SEGUNDO JOGADOR");
   PrintTable();
 
   while(1){

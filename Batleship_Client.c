@@ -86,7 +86,7 @@ void Cruzador(char Mapa[linha][coluna]) {
 			printf("Para posicionar horizontalmente digite 0, para posicionar verticalmente digite 1: ");
 			scanf("%d",&dir);
 		} while (dir != 0 && dir != 1);
-  		//rx = rand()%10; ry = rand()%10; 
+
 		if(dir == 0){
 			for (d = 0; d < 3; d++) {
 				for (c = 0; c < 4; c++) {
@@ -111,7 +111,6 @@ void Cruzador(char Mapa[linha][coluna]) {
 		if(valido == 1) {
 			
 			Mapa[ry][rx] = '@';
-			//dir = rand()%2;
 			if(dir == 0) Mapa[ry][rx + 1] = '@';
 			if(dir == 1) Mapa[ry + 1][rx] = '@';
 			
@@ -170,7 +169,6 @@ void Encouracado(char Mapa[linha][coluna]) {
 		if(valido == 1) {
 			
 			Mapa[ry][rx] = '$';
-			//dir = rand()%2;
 			if(dir == 0){
 				Mapa[ry][rx + 1] = '$';
 				Mapa[ry][rx + 2] = '$';
@@ -467,11 +465,9 @@ int PrintTable()
 }
 
 int main(){
-	/*CODIGOS PARA SOCKET QUE NAO FAÇO A MENOR IDEIA DE COMO FUNCIONA
-	*POR FAVOR NAO MEXER POR NADA NESSE MUNDO
-	*/
   setlocale(LC_ALL, "Portuguese");
   srand(time(NULL));
+  //Codigos de socket
   int clientSocket, portNum, nBytes;
   char buffer[1024];
   struct sockaddr_in serverAddr;
